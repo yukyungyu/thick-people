@@ -1,0 +1,99 @@
+.hidden{
+  overflow: hidden;
+}
+.loading{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #262c03;
+  z-index: 9999;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  transition: .3s;
+}
+.loading.hide{
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+.loader-icon {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  display: block;
+  font-size: 140px;
+  line-height: 1;
+  animation: anim-loader-icon .75s cubic-bezier(.215,.61,.355,1) infinite alternate;
+}
+@keyframes anim-loader-icon {
+  0% { opacity: .3; }
+  to { opacity: 1; }
+}
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #8eff00;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+  z-index: 999;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0);
+  margin: -1px;
+}
+.skip-nav {
+  position: absolute;
+  top: 0;
+  line-height: normal;
+}
+.skip-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 40px;
+  transform: translateY(-100%);
+  background: #000;
+  color: #fff;
+}
+.skip-nav a:focus,
+.skip-nav a:active {
+  transform: translateY(0);
+}
+
+.a-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.dot {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+[data-motion="mtext"] {
+  overflow: hidden;
+}
+[data-motion="mtext"] span {
+  display: inline-block;
+}
+
+[data-motion="btext"] {
+  perspective: 3em;
+}
+[data-motion="btext"] span {
+  display: inline-block;
+}

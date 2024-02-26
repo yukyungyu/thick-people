@@ -1,0 +1,134 @@
+@import 'reset.css';
+@import 'common.css';
+@import 'font.css';
+
+
+#header {
+  width: 100%;
+  position: fixed;
+  z-index: 500;
+}
+.header-wrap {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-wrap > * { /* util, header-logo */
+  flex: 1;
+}
+
+.header-wrap .wrap {
+  display: flex;
+  overflow: hidden;
+}
+.header-wrap .wrap.right {
+  justify-content: flex-end;
+}
+#header .wrap > * {
+  z-index: 200;
+  transition: transform .5s cubic-bezier(.215,.61,.355,1);
+}
+
+
+#header .header-logo {
+  z-index: 400;
+  transition: transform .5s cubic-bezier(.215,.61,.355,1);
+  will-change: transform;
+}
+#header .header-logo > a {
+  mix-blend-mode: difference;
+}
+#header .header-logo svg {
+  display: block;
+  fill: #8eff00;
+  width: 110px;
+  height: 72px;
+  margin: auto;
+  transform-origin: 0% 50%;
+}
+
+#header.active .wrap > * {
+  transform: translateY(-100%);
+}
+#header.active .header-logo{
+  transform: scale(0.8);
+}
+
+
+
+#footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.25rem;
+  background-color: #262c03;
+  min-height: 110vh;
+}
+#footer::before{
+  position: absolute;
+  left: 0;
+  height: 100vh;
+  bottom: 100%;
+  background-image: linear-gradient(to bottom,rgba(38,44,3,0),#262c03);
+  width: 100%;
+  content: '';
+}
+#footer * {
+  color: #8eff00;
+  text-transform: uppercase;
+}
+#footer .footer-logo {
+  margin: auto;
+  padding: 0.5em 0;
+}
+#footer .footer-logo .group-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'SharpGrotesk 15';
+  line-height: .775;
+  text-transform: uppercase;
+  font-size: 12vw;
+  perspective: 3em;
+}
+#footer .footer-logo .group-text span {
+  font-size: 2.25em;
+  display: inline-block;
+  margin: 0; padding: 0;
+}
+#footer .footer-logo .group-text span:last-child::after {
+  content: "®";
+  position: absolute;
+  bottom: .1em;
+  left: 100%;
+  display: block;
+  font-family: APK Protocol;
+  font-size: .1em;
+  font-weight: 400;
+  /* opacity: 0;
+  transform: translate3d(-125%,0,0); */
+}
+
+#footer .footer-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#footer .footer-wrap > * {
+  flex: 1;
+}
+#footer .footer-wrap small { text-align: left; }
+#footer .footer-wrap > p {
+  text-align: center;
+}
+#footer .footer-wrap .link-study { text-align: right; }
+#footer .footer-wrap > p button,
+#footer .footer-wrap a em {
+  text-decoration: underline;
+}
