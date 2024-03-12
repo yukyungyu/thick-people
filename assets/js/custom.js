@@ -1,8 +1,5 @@
 const lenis = new Lenis();
 
-// lenis.on('scroll', (e) => {
-//   console.log(e)
-// })
 lenis.on('scroll', ScrollTrigger.update)
 gsap.ticker.add((time)=>{
   lenis.raf(time * 1000)
@@ -69,8 +66,6 @@ $('[data-motion="mtext"]').each(function(i, el){
       trigger: $(el),
       start: "0% 80%",
       end: "100% 85%",
-      // markers: true,
-      // scrub: 1,
       toggleActions: "play none restart none",
     },
     delay: 0.5,
@@ -85,12 +80,29 @@ $('[data-motion="btext"]').each(function(el, i){
       trigger: $(this),
       start: "0% 60%",
       end: "100% 100%",
-      // markers: true,
       scrub: 1,
+      markers: true,
     },
     autoAlpha: 0,
     transform:'rotateX(-90deg) translate3d(0,100%,0) scale3d(.75,1,1)',
     stagger: 0.1
+  })
+})
+
+$('[data-motion="rtext"]').each(function(el, i){
+  gsap.to($(this), 1.8, {
+    scrollTrigger: {
+      trigger: $(this),
+      start: "0% 90%",
+      end: "100% 100%",
+      scrub: 1,
+      markers: true,
+    },
+    autoAlpha: 1,
+    rotateX: 0,
+    Z: 0,
+    scale: 1,
+    delay: 0.1,
   })
 })
 
@@ -202,9 +214,6 @@ marqeeMotion1 = gsap.to('.sc-thick .pacts-area.marquee .inner', 20, {
   xPercent: -33.33,
   ease:'none',
   paused: true,
-  // onComplete:function(){
-  //     alert();
-  // }
 })
 marqeeMotion2 = gsap.to('.sc-thick .pacts-area.marquee .inner', 20, {
   repeat: -1,
@@ -261,7 +270,6 @@ $('.sc-thick .banner-area').each(function(){
       start: "0% 60%",
       end: "100% 100%",
       scrub: true,
-      // markers: true,
     },
   });
     
@@ -291,7 +299,6 @@ const circleOuter = gsap.to('.sc-thick .group-circle .circle-wrapper', {
     start: "0% 100%",
     end: "100% 0%",
     scrub: true,
-    // markers: true,
   },
 
   ease: 'none',
@@ -303,7 +310,6 @@ ScrollTrigger.create({
   start: "0% 95%",
   end: "100% 0%",
   scrub: 1,
-  // markers: true,
   onUpdate: self => {
 
     if (self.direction == 1) { //스크롤 내릴때
@@ -348,45 +354,7 @@ const prdSlide = new Swiper('.prd-swiper',{
   },
 })
 
-/*
-  let title = $('.sc-slider .swiper-slide-active .slide-title');
-  let subtitle = $('.sc-slider .swiper-slide-active .slide-title');
 
-  console.log(`title : ${title}`);
-  console.log(`subtitle : ${subtitle}`);
-
-  const sliderTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: $('.sc-slider .swiper-slide'),
-      start: "0% 0%",
-      end: "100% 100%",
-      markers: true,
-      // scrub: 1,
-      onEnter: function(){
-        console.log('Enter');
-      },
-      onEnterBack: function(){
-        console.log(`onEnterBack`);
-      },
-      toggleActions: "restart none restart none",
-    },
-  });
-  sliderTl.from(title.find('span'), {
-    delay: 0.5,
-    autoAlpha: 0, 
-    yPercent: 120,
-    scale: 0,
-  })
-  sliderTl.from(subtitle.find('span'), {
-    delay: 0.5,
-    autoAlpha: 0, 
-    yPercent: 120,
-    scale: 0,
-  })
-*/
-
-
-// 마우스 따라서 둥둥 떠다니는 효과
 $('.sc-slider .group-img').mousemove(function(e) {
   offsetX = e.offsetX;
   offsetY = e.offsetY;
@@ -397,7 +365,6 @@ $('.sc-slider .group-img').mousemove(function(e) {
   pointerX = (offsetX - w/2)/1000;
   pointerY = (offsetY - h/2)/100;
 
-  // console.log(pointerX, pointerY);
 
   $(this).find('.swrap').each(function(i, el) {
     $(el).css('--pointer-x', pointerX);

@@ -97,3 +97,13 @@
 [data-motion="btext"] span {
   display: inline-block;
 }
+[data-motion="rtext"] {
+  border: 1px solid #000;
+  perspective: 3em;
+  display: block;
+  opacity: 0;
+  transform: perspective(3em) rotateX(-90deg) translate3d(0, 100%, 0) scale3d(.75, 1, 1);
+  transition-property: opacity, transform;
+  will-change: opacity, transform;
+  transform-origin: 50% 0;
+}
